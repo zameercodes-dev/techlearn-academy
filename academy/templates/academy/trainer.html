@@ -1,0 +1,40 @@
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<main class="max-w-4xl mx-auto p-6">
+   {% for trainer in trainers %}
+<div class="p-4 bg-white rounded shadow">
+    <!-- Check if the trainer has an image uploaded -->
+    {% if trainer.trainer_photo %}
+        <img src="{{ trainer.trainer_photo.url }}" alt="Trainer Photo" class="w-16 h-16 rounded-object-cover">
+    {% else %}
+        <!-- Fallback if no image exists -->
+        <div class="w-16 h-16 rounded bg-gray-200 flex items-center justify-center text-gray-500">
+            No Image
+        </div>
+    {% endif %}
+    
+    <h3 class="font-bold text-lg mt-2">{{ trainer.name }}</h3>
+</div>
+{% endfor %}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {% for trainer in trainers %}
+        <div class="bg-white border rounded-lg p-5 shadow-sm flex items-center space-x-4">
+            <!-- Trainer Avatar Placeholder -->
+            <div class="w-12 h-12 rounded-full bg-purple-100 text-purple-900 font-bold flex items-center justify-center text-lg">
+                {{ trainer.name|slice:":1" }}
+            </div>
+            <div>
+                <h3 class="text-md font-bold text-gray-900">{{ trainer.name }}</h3>
+                <p class="text-xs text-gray-500">{{ trainer.email }}</p>
+                <span class="inline-block mt-2 bg-purple-50 text-purple-900 text-xs px-2 py-1 rounded border border-purple-200">
+                    Subject: {{ trainer.subject }}
+                </span>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-gray-500">No trainers registered yet.</p>
+        {% endfor %}
+    </div>
+</main>

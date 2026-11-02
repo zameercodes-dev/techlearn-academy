@@ -1,0 +1,32 @@
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<main class="max-w-4xl mx-auto p-6">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Enrolled Students</h1>
+
+    <!-- Clean Tailwind Table -->
+    <div class="overflow-x-auto bg-white border rounded-lg shadow-sm">
+        <table class="w-full text-left text-sm text-gray-600">
+            <thead class="bg-purple-950 text-white text-xs uppercase">
+                <tr>
+                    <th class="px-6 py-3">Student Name</th>
+                    <th class="px-6 py-3">Email</th>
+                    <th class="px-6 py-3">Course</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                {% for student in students %}
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 font-medium text-gray-900">{{ student.first_name }}</td>
+                    <td class="px-6 py-4">{{ student.email }}</td>
+                    <td class="px-6 py-4">{{ student.trainer }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" class="px-6 py-4 text-center text-gray-500">No students found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>

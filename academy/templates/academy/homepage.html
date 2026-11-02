@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <nav class=" text-center space-x-4 text-3xl bg-purple-950 text-white p-3 mt-11 shadow-md ">
+       <a href="" onclick="alert('You are already on homepage')" class=" hover:text-white hover:underline">Home |</a>
+        <a href="{% url 'availablecourses'%}" class=" hover:text-white hover:underline">Courses |</a>
+        <a href="{% url 'trainers'%}" class=" hover:text-white hover:underline">Trainer |</a>
+        <a href="{% url 'portal' %}" class=" hover:text-white hover:underline" >Students</a>
+    </nav>
+    
+    <div class=" grid grid-cols-1 text-center pt-16 text-lg ">
+        <h2>Welcome to the TechLearn Academy </h2>
+        <p>Emplowering students with the good teachers who teaches well as everybody could understand </p>
+    </div>
+    <!-- Grid Container: Creates 2 side-by-side boxes with space between -->
+<div class="grid grid-cols-2 gap-x-6 max-w-2xl mx-auto ">
+
+    <!-- Card 1: Trainers -->
+    <div class="border p-6 flex justify-between items-center bg-white">
+        <span class="text-4xl font-bold">{{ total_trainers }}</span>
+        <div>
+            <p class="font-bold">Total Trainers</p>
+            <p class="text-sm text-gray-500">registered</p>
+        </div>
+    </div>
+
+    <!-- Card 2: Students -->
+    <div class="border p-6 flex justify-between items-center bg-white">
+        <span class="text-4xl font-bold">{{ total_students }}</span>
+        <div>
+            <p class="font-bold">Total Students</p>
+            <p class="text-sm text-gray-500">registered</p>
+        </div>
+    </div>
+
+</div>
+<div class=" h-48"></div>
+<hr class=" border-gray-300 ">
+<footer class=" text-gray-950 text-sm py-4 text-center ">
+    &copy; TechLearn Academy 
+
+</footer>
+</body>
+</html>
